@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class SwingAndThread extends JFrame {
 	/**
-	 * TEST aha
+	 * TEST aha a
 	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel jl = new JLabel(); // ÉùÃ÷JLabel¶ÔÏó
