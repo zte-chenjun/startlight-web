@@ -3,29 +3,29 @@ package com.dreambird.quartz;
 
 public class TestJob {
 
-    public static String JOB_NAME = "åŠ¨æ€ä»»åŠ¡è°ƒåº¦";
-    public static String TRIGGER_NAME = "åŠ¨æ€ä»»åŠ¡è§¦å‘å™¨";
+    public static String JOB_NAME = "¶¯Ì¬ÈÎÎñµ÷¶È";
+    public static String TRIGGER_NAME = "¶¯Ì¬ÈÎÎñ´¥·¢Æ÷";
     public static String JOB_GROUP_NAME = "XLXXCC_JOB_GROUP";
     public static String TRIGGER_GROUP_NAME = "XLXXCC_JOB_GROUP";
 
     public static void main(String[] args) {
         try {
-            System.out.println("ã€ç³»ç»Ÿå¯åŠ¨ã€‘å¼€å§‹(æ¯1ç§’è¾“å‡ºä¸€æ¬¡)...");
+            System.out.println("¡¾ÏµÍ³Æô¶¯¡¿¿ªÊ¼(Ã¿1ÃëÊä³öÒ»´Î)...");
             QuartzManager.addJob(JOB_NAME, JOB_GROUP_NAME, TRIGGER_NAME, TRIGGER_GROUP_NAME, MyJob.class, "0/1 * * * * ?");
 
             Thread.sleep(5000);
-            System.out.println("ã€ä¿®æ”¹æ—¶é—´ã€‘å¼€å§‹(æ¯5ç§’è¾“å‡ºä¸€æ¬¡)...");
+            System.out.println("¡¾ĞŞ¸ÄÊ±¼ä¡¿¿ªÊ¼(Ã¿5ÃëÊä³öÒ»´Î)...");
             QuartzManager.modifyJobTime(JOB_NAME, JOB_GROUP_NAME, TRIGGER_NAME, TRIGGER_GROUP_NAME, "0/5 * * * * ?");
 
             Thread.sleep(16000);
-            System.out.println("ã€ç§»é™¤å®šæ—¶ä»»åŠ¡ã€‘å¼€å§‹...");
+            System.out.println("¡¾ÒÆ³ı¶¨Ê±ÈÎÎñ¡¿¿ªÊ¼...");
             QuartzManager.removeJob(JOB_NAME, JOB_GROUP_NAME, TRIGGER_NAME, TRIGGER_GROUP_NAME);
-            System.out.println("ã€ç§»é™¤å®šæ—¶ä»»åŠ¡ã€‘æˆåŠŸ");
+            System.out.println("¡¾ÒÆ³ı¶¨Ê±ÈÎÎñ¡¿³É¹¦");
 
             Thread.sleep(6000);
-            System.out.println("ã€å…³é—­å®šæ—¶å™¨ã€‘å¼€å§‹...");
+            System.out.println("¡¾¹Ø±Õ¶¨Ê±Æ÷¡¿¿ªÊ¼...");
             QuartzManager.shutdownJobs();
-            System.out.println("ã€å…³é—­å®šæ—¶å™¨ã€‘æˆåŠŸ");
+            System.out.println("¡¾¹Ø±Õ¶¨Ê±Æ÷¡¿³É¹¦");
         } catch (Exception e) {
             e.printStackTrace();
         }

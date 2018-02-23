@@ -18,15 +18,15 @@ public class MyJob implements Job{
     	
         System.out.println(getCurrentDate() + "---------------start---------------");
         
-        //è·å–ä»»åŠ¡è¯¦æƒ…ä¿¡æ¯
+        //»ñÈ¡ÈÎÎñÏêÇéĞÅÏ¢
         JobKey jobKey = jobExecutionContext.getJobDetail().getKey();
         System.out.println("my job name and groupName are:"+jobKey.getName()+"-"+jobKey.getGroup());
         
-        //è·å–è§¦å‘å™¨è¯¦æƒ…ä¿¡æ¯
+        //»ñÈ¡´¥·¢Æ÷ÏêÇéĞÅÏ¢
         TriggerKey trigger = jobExecutionContext.getTrigger().getKey();
         System.out.println("my trigger name and groupName are:"+trigger.getName()+"-"+trigger.getGroup());
         
-        //è·å–JobDataMapä¿¡æ¯
+        //»ñÈ¡JobDataMapĞÅÏ¢
         JobDataMap jobDataMap = jobExecutionContext.getJobDetail().getJobDataMap();
         JobDataMap triggerDataMap = jobExecutionContext.getTrigger().getJobDataMap();
         String jobMsg = jobDataMap.getString("message");
