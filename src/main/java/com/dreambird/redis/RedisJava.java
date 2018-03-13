@@ -18,7 +18,7 @@ public class RedisJava {
     public static  void connectionTest(){
         //连接本地的 Redis 服务
 //        Jedis jedis = new Jedis("localhost");
-        Jedis jedis = new Jedis("192.168.88.128",6379);
+        Jedis jedis = new Jedis("8.8.8.8",6379);
         System.out.println("连接成功");
         //查看服务是否运行
         System.out.println("服务正在运行: "+jedis.ping());
