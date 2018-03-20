@@ -99,9 +99,37 @@ public class JedisDemo {
         jedis.rpush("java framework","struts");
         jedis.rpush("java framework","hibernate");
         System.out.println(jedis.lrange("java framework",0,-1));
+    }
 
-
-
+    /**
+     * jedis²Ù×÷Set
+     */
+    @Test
+    public void testSet(){
+        jedis.srandmember("person");
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
