@@ -7,44 +7,44 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
- * poi²âÊÔÀà
+ * poiæµ‹è¯•ç±»
  * @author chen.jun
  *
  */
 public class PoiDemo {
 
-	 @SuppressWarnings("resource")
-	 public static void main(String[] args) throws Exception {
-	    //´´½¨¹¤×÷²¾---->XSSF´ú±í10°æµÄExcel(HSSFÊÇ03°æµÄExcel)
-	    XSSFWorkbook wb = new XSSFWorkbook();
-	    //¹¤×÷±í
-	    XSSFSheet sheet = wb.createSheet("»áÔ±ÁĞ±í");
-	    //±êÍ·ĞĞ£¬´ú±íµÚÒ»ĞĞ
-	    XSSFRow header=sheet.createRow(0);
-	    //´´½¨µ¥Ôª¸ñ£¬0´ú±íµÚÒ»ĞĞµÚÒ»ÁĞ
-	    XSSFCell cell0=header.createCell(0);
-	    cell0.setCellValue("»áÔ±¼¶±ğ");
-	    header.createCell(1).setCellValue("»áÔ±±àºÅ");
-	    header.createCell(2).setCellValue("»áÔ±ĞÕÃû");   
-	    header.createCell(3).setCellValue("ÍÆ¼öÈË±àºÅ");
-	    header.createCell(4).setCellValue("¸ºÔğÈË±àºÅ");   
-	    header.createCell(5).setCellValue("µØÖ·±àºÅ");
-	    header.createCell(6).setCellValue("×¢²áÊ±¼ä");
-	    //ÉèÖÃÁĞµÄ¿í¶È
-	    //getPhysicalNumberOfCells()´ú±íÕâĞĞÓĞ¶àÉÙ°üº¬Êı¾İµÄÁĞ
-	    for(int i=0;i<header.getPhysicalNumberOfCells();i++){
-	     //POIÉèÖÃÁĞ¿í¶ÈÊ±±È½ÏÌØÊâ£¬ËüµÄ»ù±¾µ¥Î»ÊÇ1/255¸ö×Ö·û´óĞ¡£¬
-	     //Òò´ËÎÒÃÇÒªÏëÈÃÁĞÄÜ¹»Ê¢µÄÏÂ20¸ö×Ö·ûµÄ»°£¬¾ÍĞèÒªÓÃ255*20
-	     sheet.setColumnWidth(i, 255*20);
-	    }
-	    //ÉèÖÃĞĞ¸ß£¬ĞĞ¸ßµÄµ¥Î»¾ÍÊÇÏñËØ£¬Òò´Ë30¾ÍÊÇ30ÏñËØµÄÒâË¼
-	    header.setHeightInPoints(30);
-	    //ÉÏÃæÉèÖÃºÃÁËÄÚÈİ£¬ÎÒÃÇµ±È»ÊÇÒªÊä³öµ½Ä³¸öÎÄ¼şµÄ£¬Êä³ö¾ÍĞèÒªÓĞÊä³öÁ÷
-	    FileOutputStream fos= new FileOutputStream("e:/2010.xlsx");
-	    //ÏòÖ¸¶¨ÎÄ¼şĞ´ÈëÄÚÈİ
-	    wb.write(fos);
-	    fos.close();   
-	    System.out.println("ÒÑÉú³É£ºe:/2010.xlsx");
-	 }
-	
+	@SuppressWarnings("resource")
+	public static void main(String[] args) throws Exception {
+		//åˆ›å»ºå·¥ä½œç°¿---->XSSFä»£è¡¨10ç‰ˆçš„Excel(HSSFæ˜¯03ç‰ˆçš„Excel)
+		XSSFWorkbook wb = new XSSFWorkbook();
+		//å·¥ä½œè¡¨
+		XSSFSheet sheet = wb.createSheet("ä¼šå‘˜åˆ—è¡¨");
+		//æ ‡å¤´è¡Œï¼Œä»£è¡¨ç¬¬ä¸€è¡Œ
+		XSSFRow header=sheet.createRow(0);
+		//åˆ›å»ºå•å…ƒæ ¼ï¼Œ0ä»£è¡¨ç¬¬ä¸€è¡Œç¬¬ä¸€åˆ—
+		XSSFCell cell0=header.createCell(0);
+		cell0.setCellValue("ä¼šå‘˜çº§åˆ«");
+		header.createCell(1).setCellValue("ä¼šå‘˜ç¼–å·");
+		header.createCell(2).setCellValue("ä¼šå‘˜å§“å");
+		header.createCell(3).setCellValue("æ¨èäººç¼–å·");
+		header.createCell(4).setCellValue("è´Ÿè´£äººç¼–å·");
+		header.createCell(5).setCellValue("åœ°å€ç¼–å·");
+		header.createCell(6).setCellValue("æ³¨å†Œæ—¶é—´");
+		//è®¾ç½®åˆ—çš„å®½åº¦
+		//getPhysicalNumberOfCells()ä»£è¡¨è¿™è¡Œæœ‰å¤šå°‘åŒ…å«æ•°æ®çš„åˆ—
+		for(int i=0;i<header.getPhysicalNumberOfCells();i++){
+			//POIè®¾ç½®åˆ—å®½åº¦æ—¶æ¯”è¾ƒç‰¹æ®Šï¼Œå®ƒçš„åŸºæœ¬å•ä½æ˜¯1/255ä¸ªå­—ç¬¦å¤§å°ï¼Œ
+			//å› æ­¤æˆ‘ä»¬è¦æƒ³è®©åˆ—èƒ½å¤Ÿç››çš„ä¸‹20ä¸ªå­—ç¬¦çš„è¯ï¼Œå°±éœ€è¦ç”¨255*20
+			sheet.setColumnWidth(i, 255*20);
+		}
+		//è®¾ç½®è¡Œé«˜ï¼Œè¡Œé«˜çš„å•ä½å°±æ˜¯åƒç´ ï¼Œå› æ­¤30å°±æ˜¯30åƒç´ çš„æ„æ€
+		header.setHeightInPoints(30);
+		//ä¸Šé¢è®¾ç½®å¥½äº†å†…å®¹ï¼Œæˆ‘ä»¬å½“ç„¶æ˜¯è¦è¾“å‡ºåˆ°æŸä¸ªæ–‡ä»¶çš„ï¼Œè¾“å‡ºå°±éœ€è¦æœ‰è¾“å‡ºæµ
+		FileOutputStream fos= new FileOutputStream("e:/2010.xlsx");
+		//å‘æŒ‡å®šæ–‡ä»¶å†™å…¥å†…å®¹
+		wb.write(fos);
+		fos.close();
+		System.out.println("å·²ç”Ÿæˆï¼še:/2010.xlsx");
+	}
+
 }

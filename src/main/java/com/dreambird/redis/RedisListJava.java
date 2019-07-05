@@ -9,17 +9,17 @@ import java.util.List;
  */
 public class RedisListJava {
     public static void main(String[] args) {
-        //Á¬½Ó±¾µØµÄ Redis ·şÎñ
+        //è¿æ¥æœ¬åœ°çš„ Redis æœåŠ¡
         Jedis jedis = new Jedis("localhost");
-        System.out.println("Á¬½Ó³É¹¦");
-        //´æ´¢Êı¾İµ½ÁĞ±íÖĞ
+        System.out.println("è¿æ¥æˆåŠŸ");
+        //å­˜å‚¨æ•°æ®åˆ°åˆ—è¡¨ä¸­
         jedis.lpush("site-list", "Runoob");
         jedis.lpush("site-list", "Google");
         jedis.lpush("site-list", "Taobao");
-        // »ñÈ¡´æ´¢µÄÊı¾İ²¢Êä³ö
+        // è·å–å­˜å‚¨çš„æ•°æ®å¹¶è¾“å‡º
         List<String> list = jedis.lrange("site-list", 0 ,2);
         for(int i=0; i<list.size(); i++) {
-            System.out.println("ÁĞ±íÏîÎª: "+list.get(i));
+            System.out.println("åˆ—è¡¨é¡¹ä¸º: "+list.get(i));
         }
     }
 }

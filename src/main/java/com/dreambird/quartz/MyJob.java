@@ -11,22 +11,22 @@ import org.quartz.JobKey;
 import org.quartz.TriggerKey;
 
 public class MyJob implements Job{
-	
-	private static String pattern = "yyyy-MM-dd HH:mm:ss";
+
+    private static String pattern = "yyyy-MM-dd HH:mm:ss";
 
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-    	
+
         System.out.println(getCurrentDate() + "---------------start---------------");
-        
-        //»ñÈ¡ÈÎÎñÏêÇéĞÅÏ¢
+
+        //è·å–ä»»åŠ¡è¯¦æƒ…ä¿¡æ¯
         JobKey jobKey = jobExecutionContext.getJobDetail().getKey();
         System.out.println("my job name and groupName are:"+jobKey.getName()+"-"+jobKey.getGroup());
-        
-        //»ñÈ¡´¥·¢Æ÷ÏêÇéĞÅÏ¢
+
+        //è·å–è§¦å‘å™¨è¯¦æƒ…ä¿¡æ¯
         TriggerKey trigger = jobExecutionContext.getTrigger().getKey();
         System.out.println("my trigger name and groupName are:"+trigger.getName()+"-"+trigger.getGroup());
-        
-        //»ñÈ¡JobDataMapĞÅÏ¢
+
+        //è·å–JobDataMapä¿¡æ¯
         JobDataMap jobDataMap = jobExecutionContext.getJobDetail().getJobDataMap();
         JobDataMap triggerDataMap = jobExecutionContext.getTrigger().getJobDataMap();
         String jobMsg = jobDataMap.getString("message");
@@ -37,13 +37,13 @@ public class MyJob implements Job{
         System.out.println("jobFloat:"+jobFloat);
         System.out.println("triggerMsg:"+triggerMsg);
         System.out.println("triggerFloat:"+triggerFloat);
-        
+
         System.out.println(getCurrentDate() + "---------------end---------------");
     }
-    
+
     public String getCurrentDate(){
-    	Date date = new Date();
-    	SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-    	return sdf.format(date);
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        return sdf.format(date);
     }
 }

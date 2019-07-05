@@ -14,28 +14,28 @@ import org.quartz.impl.StdSchedulerFactory;
 
 public class QuartzManager {
 
-    private static SchedulerFactory schedulerFactory = new StdSchedulerFactory();  
+    private static SchedulerFactory schedulerFactory = new StdSchedulerFactory();
 
-    /** 
-     * @Description: Ìí¼ÓÒ»¸ö¶¨Ê±ÈÎÎñ 
-     *  
-     * @param jobName ÈÎÎñÃû 
-     * @param jobGroupName  ÈÎÎñ×éÃû 
-     * @param triggerName ´¥·¢Æ÷Ãû 
-     * @param triggerGroupName ´¥·¢Æ÷×éÃû 
-     * @param jobClass  ÈÎÎñ 
-     * @param cron   Ê±¼äÉèÖÃ£¬²Î¿¼quartzËµÃ÷ÎÄµµ  
-     */  
+    /**
+     * @Description: æ·»åŠ ä¸€ä¸ªå®šæ—¶ä»»åŠ¡
+     *
+     * @param jobName ä»»åŠ¡å
+     * @param jobGroupName  ä»»åŠ¡ç»„å
+     * @param triggerName è§¦å‘å™¨å
+     * @param triggerGroupName è§¦å‘å™¨ç»„å
+     * @param jobClass  ä»»åŠ¡
+     * @param cron   æ—¶é—´è®¾ç½®ï¼Œå‚è€ƒquartzè¯´æ˜æ–‡æ¡£
+     */
 
-    public static void addJob(String jobName, String jobGroupName, 
-            String triggerName, String triggerGroupName, Class jobClass, String cron) {  
-        try {  
-            Scheduler sched = schedulerFactory.getScheduler();  
-            // ¹¹½¨JobDetailÀà Í¨¹ıusingJobData()·½·¨¸øJobÖĞµÄJobExecutionContextµÄJobDataMapÉèÖÃ²ÎÊı
+    public static void addJob(String jobName, String jobGroupName,
+                              String triggerName, String triggerGroupName, Class jobClass, String cron) {
+        try {
+            Scheduler sched = schedulerFactory.getScheduler();
+            // æ„å»ºJobDetailç±» é€šè¿‡usingJobData()æ–¹æ³•ç»™Jobä¸­çš„JobExecutionContextçš„JobDataMapè®¾ç½®å‚æ•°
             JobDetail jobDetail= JobBuilder.newJob(jobClass).withIdentity(jobName, jobGroupName)
-            		                                        .usingJobData("message", "myJob")
-            		                                        .usingJobData("Float", 3.14F).build();
-            
+                    .usingJobData("message", "myJob")
+                    .usingJobData("Float", 3.14F).build();
+
             /**
              * JobDetail : name group jobClass
              */
@@ -43,121 +43,121 @@ public class QuartzManager {
             System.out.println("JobDetail's group:"+jobDetail.getKey().getGroup());
             System.out.println("JobDetail's jobClass:"+jobDetail.getJobClass().getName());
 
-            // ´¥·¢Æ÷  
+            // è§¦å‘å™¨
             TriggerBuilder<Trigger> triggerBuilder = TriggerBuilder.newTrigger();
-            // ´¥·¢Æ÷Ãû,´¥·¢Æ÷×é  
+            // è§¦å‘å™¨å,è§¦å‘å™¨ç»„
             triggerBuilder.withIdentity(triggerName, triggerGroupName);
             triggerBuilder.startNow();
-            // ´¥·¢Æ÷Ê±¼äÉè¶¨  
+            // è§¦å‘å™¨æ—¶é—´è®¾å®š
             triggerBuilder.withSchedule(CronScheduleBuilder.cronSchedule(cron));
-            // ´´½¨Trigger¶ÔÏó
+            // åˆ›å»ºTriggerå¯¹è±¡
             CronTrigger trigger = (CronTrigger) triggerBuilder.usingJobData("message", "myJob").usingJobData("Float", 3.14F).build();
 
-            // µ÷¶ÈÈİÆ÷ÉèÖÃJobDetailºÍTrigger
-            sched.scheduleJob(jobDetail, trigger);  
-            
-            // Æô¶¯  
-            if (!sched.isShutdown()) {  
-                sched.start();  
-            }  
-        } catch (Exception e) {  
-            throw new RuntimeException(e);  
-        }  
-    }  
+            // è°ƒåº¦å®¹å™¨è®¾ç½®JobDetailå’ŒTrigger
+            sched.scheduleJob(jobDetail, trigger);
 
-    /** 
-     * @Description: ĞŞ¸ÄÒ»¸öÈÎÎñµÄ´¥·¢Ê±¼ä
-     *  
-     * @param jobName 
+            // å¯åŠ¨
+            if (!sched.isShutdown()) {
+                sched.start();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * @Description: ä¿®æ”¹ä¸€ä¸ªä»»åŠ¡çš„è§¦å‘æ—¶é—´
+     *
+     * @param jobName
      * @param jobGroupName
-     * @param triggerName ´¥·¢Æ÷Ãû
-     * @param triggerGroupName ´¥·¢Æ÷×éÃû 
-     * @param cron   Ê±¼äÉèÖÃ£¬²Î¿¼quartzËµÃ÷ÎÄµµ   
-     */  
-    public static void modifyJobTime(String jobName, 
-            String jobGroupName, String triggerName, String triggerGroupName, String cron) {  
-        try {  
-            Scheduler sched = schedulerFactory.getScheduler();  
+     * @param triggerName è§¦å‘å™¨å
+     * @param triggerGroupName è§¦å‘å™¨ç»„å
+     * @param cron   æ—¶é—´è®¾ç½®ï¼Œå‚è€ƒquartzè¯´æ˜æ–‡æ¡£
+     */
+    public static void modifyJobTime(String jobName,
+                                     String jobGroupName, String triggerName, String triggerGroupName, String cron) {
+        try {
+            Scheduler sched = schedulerFactory.getScheduler();
             TriggerKey triggerKey = TriggerKey.triggerKey(triggerName, triggerGroupName);
-            CronTrigger trigger = (CronTrigger) sched.getTrigger(triggerKey);  
-            if (trigger == null) {  
-                return;  
-            }  
+            CronTrigger trigger = (CronTrigger) sched.getTrigger(triggerKey);
+            if (trigger == null) {
+                return;
+            }
 
-            String oldTime = trigger.getCronExpression();  
-            if (!oldTime.equalsIgnoreCase(cron)) { 
-                /** ·½Ê½Ò» £ºµ÷ÓÃ rescheduleJob ¿ªÊ¼ */
-                // ´¥·¢Æ÷  
+            String oldTime = trigger.getCronExpression();
+            if (!oldTime.equalsIgnoreCase(cron)) {
+                /** æ–¹å¼ä¸€ ï¼šè°ƒç”¨ rescheduleJob å¼€å§‹ */
+                // è§¦å‘å™¨
                 TriggerBuilder<Trigger> triggerBuilder = TriggerBuilder.newTrigger();
-                // ´¥·¢Æ÷Ãû,´¥·¢Æ÷×é  
+                // è§¦å‘å™¨å,è§¦å‘å™¨ç»„
                 triggerBuilder.withIdentity(triggerName, triggerGroupName);
                 triggerBuilder.startNow();
-                // ´¥·¢Æ÷Ê±¼äÉè¶¨  
+                // è§¦å‘å™¨æ—¶é—´è®¾å®š
                 triggerBuilder.withSchedule(CronScheduleBuilder.cronSchedule(cron));
-                // ´´½¨Trigger¶ÔÏó
+                // åˆ›å»ºTriggerå¯¹è±¡
                 trigger = (CronTrigger) triggerBuilder.build();
-                // ·½Ê½Ò» £ºĞŞ¸ÄÒ»¸öÈÎÎñµÄ´¥·¢Ê±¼ä
+                // æ–¹å¼ä¸€ ï¼šä¿®æ”¹ä¸€ä¸ªä»»åŠ¡çš„è§¦å‘æ—¶é—´
                 sched.rescheduleJob(triggerKey, trigger);
-                /** ·½Ê½Ò» £ºµ÷ÓÃ rescheduleJob ½áÊø */
+                /** æ–¹å¼ä¸€ ï¼šè°ƒç”¨ rescheduleJob ç»“æŸ */
 
-                /** ·½Ê½¶ş£ºÏÈÉ¾³ı£¬È»ºóÔÚ´´½¨Ò»¸öĞÂµÄJob  */
-                //JobDetail jobDetail = sched.getJobDetail(JobKey.jobKey(jobName, jobGroupName));  
-                //Class<? extends Job> jobClass = jobDetail.getJobClass();  
-                //removeJob(jobName, jobGroupName, triggerName, triggerGroupName);  
-                //addJob(jobName, jobGroupName, triggerName, triggerGroupName, jobClass, cron); 
-                /** ·½Ê½¶ş £ºÏÈÉ¾³ı£¬È»ºóÔÚ´´½¨Ò»¸öĞÂµÄJob */
-            }  
-        } catch (Exception e) {  
-            throw new RuntimeException(e);  
-        }  
-    }  
+                /** æ–¹å¼äºŒï¼šå…ˆåˆ é™¤ï¼Œç„¶ååœ¨åˆ›å»ºä¸€ä¸ªæ–°çš„Job  */
+                //JobDetail jobDetail = sched.getJobDetail(JobKey.jobKey(jobName, jobGroupName));
+                //Class<? extends Job> jobClass = jobDetail.getJobClass();
+                //removeJob(jobName, jobGroupName, triggerName, triggerGroupName);
+                //addJob(jobName, jobGroupName, triggerName, triggerGroupName, jobClass, cron);
+                /** æ–¹å¼äºŒ ï¼šå…ˆåˆ é™¤ï¼Œç„¶ååœ¨åˆ›å»ºä¸€ä¸ªæ–°çš„Job */
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-    /** 
-     * @Description: ÒÆ³ıÒ»¸öÈÎÎñ 
-     *  
-     * @param jobName 
-     * @param jobGroupName 
-     * @param triggerName 
-     * @param triggerGroupName 
-     */  
-    public static void removeJob(String jobName, String jobGroupName,  
-            String triggerName, String triggerGroupName) {  
-        try {  
-            Scheduler sched = schedulerFactory.getScheduler();  
+    /**
+     * @Description: ç§»é™¤ä¸€ä¸ªä»»åŠ¡
+     *
+     * @param jobName
+     * @param jobGroupName
+     * @param triggerName
+     * @param triggerGroupName
+     */
+    public static void removeJob(String jobName, String jobGroupName,
+                                 String triggerName, String triggerGroupName) {
+        try {
+            Scheduler sched = schedulerFactory.getScheduler();
 
             TriggerKey triggerKey = TriggerKey.triggerKey(triggerName, triggerGroupName);
 
-            sched.pauseTrigger(triggerKey);// Í£Ö¹´¥·¢Æ÷  
-            sched.unscheduleJob(triggerKey);// ÒÆ³ı´¥·¢Æ÷  
-            sched.deleteJob(JobKey.jobKey(jobName, jobGroupName));// É¾³ıÈÎÎñ  
-        } catch (Exception e) {  
-            throw new RuntimeException(e);  
-        }  
-    }  
+            sched.pauseTrigger(triggerKey);// åœæ­¢è§¦å‘å™¨
+            sched.unscheduleJob(triggerKey);// ç§»é™¤è§¦å‘å™¨
+            sched.deleteJob(JobKey.jobKey(jobName, jobGroupName));// åˆ é™¤ä»»åŠ¡
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-    /** 
-     * @Description:Æô¶¯ËùÓĞ¶¨Ê±ÈÎÎñ 
-     */  
-    public static void startJobs() {  
-        try {  
-            Scheduler sched = schedulerFactory.getScheduler();  
-            sched.start();  
-        } catch (Exception e) {  
-            throw new RuntimeException(e);  
-        }  
-    }  
+    /**
+     * @Description:å¯åŠ¨æ‰€æœ‰å®šæ—¶ä»»åŠ¡
+     */
+    public static void startJobs() {
+        try {
+            Scheduler sched = schedulerFactory.getScheduler();
+            sched.start();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
-    /** 
-     * @Description:¹Ø±ÕËùÓĞ¶¨Ê±ÈÎÎñ 
-     */  
-    public static void shutdownJobs() {  
-        try {  
-            Scheduler sched = schedulerFactory.getScheduler();  
-            if (!sched.isShutdown()) {  
-                sched.shutdown();  
-            }  
-        } catch (Exception e) {  
-            throw new RuntimeException(e);  
-        }  
-    }  
+    /**
+     * @Description:å…³é—­æ‰€æœ‰å®šæ—¶ä»»åŠ¡
+     */
+    public static void shutdownJobs() {
+        try {
+            Scheduler sched = schedulerFactory.getScheduler();
+            if (!sched.isShutdown()) {
+                sched.shutdown();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

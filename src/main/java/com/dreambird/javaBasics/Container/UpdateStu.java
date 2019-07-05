@@ -45,39 +45,39 @@ public class UpdateStu implements Comparable<Object> {
     }
 
     public static void main(String[] args){
-        UpdateStu stu1 = new UpdateStu(1001L,"ÕÅÈı");
-        UpdateStu stu2 = new UpdateStu(1002L,"ÀîËÄ");
-        UpdateStu stu3 = new UpdateStu(1000L,"ÖÜÁù");
-        UpdateStu stu4 = new UpdateStu(1003L,"ÍõÎå");
+        UpdateStu stu1 = new UpdateStu(1001L,"å¼ ä¸‰");
+        UpdateStu stu2 = new UpdateStu(1002L,"æå››");
+        UpdateStu stu3 = new UpdateStu(1000L,"å‘¨å…­");
+        UpdateStu stu4 = new UpdateStu(1003L,"ç‹äº”");
 
         TreeSet<UpdateStu> treeSet = new TreeSet<UpdateStu>();
         treeSet.add(stu1);
         treeSet.add(stu2);
         treeSet.add(stu3);
         treeSet.add(stu4);
-        System.out.println("±éÀúTreeSet¼¯ºÏ¿ªÊ¼----------");
+        System.out.println("éå†TreeSeté›†åˆå¼€å§‹----------");
         Iterator<UpdateStu> it = treeSet.iterator();
         while (it.hasNext()){
             UpdateStu stu = it.next();
             System.out.println(stu.getId()+"---------"+stu.getName());
         }
-        System.out.println("½ØÈ¡Ç°Ãæ²¿·ÖµÄ¼¯ºÏ£º");
+        System.out.println("æˆªå–å‰é¢éƒ¨åˆ†çš„é›†åˆï¼š");
         it = treeSet.headSet(stu2).iterator();
         while (it.hasNext()){
             UpdateStu stu = it.next();
             System.out.println(stu.getId()+"---------"+stu.getName());
         }
         it = treeSet.subSet(stu3,stu4).iterator();
-        System.out.println("½ØÈ¡ÖĞ¼ä²¿·ÖµÄ¼¯ºÏ");
+        System.out.println("æˆªå–ä¸­é—´éƒ¨åˆ†çš„é›†åˆ");
         while (it.hasNext()){
             UpdateStu stu = it.next();
             System.out.println(stu.getId()+"---------"+stu.getName());
         }
 
         Map<String,Object> map = new HashMap<String,Object>();
-        map.put("01","ÕÅÈı");
-        map.put("02","ÀîËÄ");
-        map.put("03","ÍõÎå");
+        map.put("01","å¼ ä¸‰");
+        map.put("02","æå››");
+        map.put("03","ç‹äº”");
         Set<String> keys = map.keySet();
         for(String str:keys){
             System.out.println(map.get(str));

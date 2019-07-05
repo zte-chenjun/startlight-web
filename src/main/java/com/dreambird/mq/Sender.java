@@ -1,75 +1,75 @@
 package com.dreambird.mq;
 
-/** 
- * @Header: Sender.java 
- * ÀàÃèÊö£º 
- * @author: lm 
- * @date 2013-7-17 ÉÏÎç10:52:42 
- * @Email  
- * @company »¶ 
- * @addr ±±¾©ÊĞ³¯ÑôÇø¾¢ËÉ 
- */  
-import javax.jms.Connection;  
-import javax.jms.ConnectionFactory;  
-import javax.jms.DeliveryMode;  
-import javax.jms.Destination;  
-import javax.jms.MessageProducer;  
-import javax.jms.Session;  
-import javax.jms.TextMessage;  
-import org.apache.activemq.ActiveMQConnection;  
-import org.apache.activemq.ActiveMQConnectionFactory;  
-  
-public class Sender {  
-    private static final int SEND_NUMBER = 5;  
-  
-    public static void main(String[] args) {  
-        // ConnectionFactory £ºÁ¬½Ó¹¤³§£¬JMS ÓÃËü´´½¨Á¬½Ó  
-        ConnectionFactory connectionFactory; // Connection £ºJMS ¿Í»§¶Ëµ½JMS  
-        // Provider µÄÁ¬½Ó  
-        Connection connection = null; // Session£º Ò»¸ö·¢ËÍ»ò½ÓÊÕÏûÏ¢µÄÏß³Ì  
-        Session session; // Destination £ºÏûÏ¢µÄÄ¿µÄµØ;ÏûÏ¢·¢ËÍ¸øË­.  
-        Destination destination; // MessageProducer£ºÏûÏ¢·¢ËÍÕß  
-        MessageProducer producer; // TextMessage message;  
-        // ¹¹ÔìConnectionFactoryÊµÀı¶ÔÏó£¬´Ë´¦²ÉÓÃActiveMqµÄÊµÏÖjar  
-        connectionFactory = new ActiveMQConnectionFactory(  
-                ActiveMQConnection.DEFAULT_USER,  
-                ActiveMQConnection.DEFAULT_PASSWORD, "tcp://localhost:61616");  
-        try { // ¹¹Ôì´Ó¹¤³§µÃµ½Á¬½Ó¶ÔÏó  
-            connection = connectionFactory.createConnection();  
-            // Æô¶¯  
-            connection.start();  
-            // »ñÈ¡²Ù×÷Á¬½Ó  
-            session = connection.createSession(Boolean.TRUE,  
-                    Session.AUTO_ACKNOWLEDGE);  
-            // »ñÈ¡session×¢Òâ²ÎÊıÖµxingbo.xu-queueÊÇÒ»¸ö·şÎñÆ÷µÄqueue£¬ĞëÔÚÔÚActiveMqµÄconsoleÅäÖÃ  
-            destination = session.createQueue("FirstQueue");  
-            // µÃµ½ÏûÏ¢Éú³ÉÕß¡¾·¢ËÍÕß¡¿  
-            producer = session.createProducer(destination);  
-            // ÉèÖÃ²»³Ö¾Ã»¯£¬´Ë´¦Ñ§Ï°£¬Êµ¼Ê¸ù¾İÏîÄ¿¾ö¶¨  
-            producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);  
-            // ¹¹ÔìÏûÏ¢£¬´Ë´¦Ğ´ËÀ£¬ÏîÄ¿¾ÍÊÇ²ÎÊı£¬»òÕß·½·¨»ñÈ¡  
-            sendMessage(session, producer);  
-            session.commit();  
-        } catch (Exception e) {  
-            e.printStackTrace();  
-        } finally {  
-            try {  
-                if (null != connection)  
-                    connection.close();  
-            } catch (Throwable ignore) {  
-            }  
-        }  
-    }  
-  
-    public static void sendMessage(Session session, MessageProducer producer)  
-            throws Exception {  
-        for (int i = 1; i <= SEND_NUMBER; i++) {  
-            TextMessage message = session.createTextMessage("ActiveMq ·¢ËÍµÄÏûÏ¢"  
-                    + i);  
-            // ·¢ËÍÏûÏ¢µ½Ä¿µÄµØ·½  
-  
-            System.out.println("·¢ËÍÏûÏ¢£º" + "ActiveMq ·¢ËÍµÄÏûÏ¢" + i);  
-            producer.send(message);  
-        }  
-    }  
+/**
+ * @Header: Sender.java
+ * ç±»æè¿°ï¼š
+ * @author: lm
+ * @date 2013-7-17 ä¸Šåˆ10:52:42
+ * @Email
+ * @company æ¬¢
+ * @addr åŒ—äº¬å¸‚æœé˜³åŒºåŠ²æ¾
+ */
+import javax.jms.Connection;
+import javax.jms.ConnectionFactory;
+import javax.jms.DeliveryMode;
+import javax.jms.Destination;
+import javax.jms.MessageProducer;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+import org.apache.activemq.ActiveMQConnection;
+import org.apache.activemq.ActiveMQConnectionFactory;
+
+public class Sender {
+    private static final int SEND_NUMBER = 5;
+
+    public static void main(String[] args) {
+        // ConnectionFactory ï¼šè¿æ¥å·¥å‚ï¼ŒJMS ç”¨å®ƒåˆ›å»ºè¿æ¥
+        ConnectionFactory connectionFactory; // Connection ï¼šJMS å®¢æˆ·ç«¯åˆ°JMS
+        // Provider çš„è¿æ¥
+        Connection connection = null; // Sessionï¼š ä¸€ä¸ªå‘é€æˆ–æ¥æ”¶æ¶ˆæ¯çš„çº¿ç¨‹
+        Session session; // Destination ï¼šæ¶ˆæ¯çš„ç›®çš„åœ°;æ¶ˆæ¯å‘é€ç»™è°.
+        Destination destination; // MessageProducerï¼šæ¶ˆæ¯å‘é€è€…
+        MessageProducer producer; // TextMessage message;
+        // æ„é€ ConnectionFactoryå®ä¾‹å¯¹è±¡ï¼Œæ­¤å¤„é‡‡ç”¨ActiveMqçš„å®ç°jar
+        connectionFactory = new ActiveMQConnectionFactory(
+                ActiveMQConnection.DEFAULT_USER,
+                ActiveMQConnection.DEFAULT_PASSWORD, "tcp://localhost:61616");
+        try { // æ„é€ ä»å·¥å‚å¾—åˆ°è¿æ¥å¯¹è±¡
+            connection = connectionFactory.createConnection();
+            // å¯åŠ¨
+            connection.start();
+            // è·å–æ“ä½œè¿æ¥
+            session = connection.createSession(Boolean.TRUE,
+                    Session.AUTO_ACKNOWLEDGE);
+            // è·å–sessionæ³¨æ„å‚æ•°å€¼xingbo.xu-queueæ˜¯ä¸€ä¸ªæœåŠ¡å™¨çš„queueï¼Œé¡»åœ¨åœ¨ActiveMqçš„consoleé…ç½®
+            destination = session.createQueue("FirstQueue");
+            // å¾—åˆ°æ¶ˆæ¯ç”Ÿæˆè€…ã€å‘é€è€…ã€‘
+            producer = session.createProducer(destination);
+            // è®¾ç½®ä¸æŒä¹…åŒ–ï¼Œæ­¤å¤„å­¦ä¹ ï¼Œå®é™…æ ¹æ®é¡¹ç›®å†³å®š
+            producer.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
+            // æ„é€ æ¶ˆæ¯ï¼Œæ­¤å¤„å†™æ­»ï¼Œé¡¹ç›®å°±æ˜¯å‚æ•°ï¼Œæˆ–è€…æ–¹æ³•è·å–
+            sendMessage(session, producer);
+            session.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (null != connection)
+                    connection.close();
+            } catch (Throwable ignore) {
+            }
+        }
+    }
+
+    public static void sendMessage(Session session, MessageProducer producer)
+            throws Exception {
+        for (int i = 1; i <= SEND_NUMBER; i++) {
+            TextMessage message = session.createTextMessage("ActiveMq å‘é€çš„æ¶ˆæ¯"
+                    + i);
+            // å‘é€æ¶ˆæ¯åˆ°ç›®çš„åœ°æ–¹
+
+            System.out.println("å‘é€æ¶ˆæ¯ï¼š" + "ActiveMq å‘é€çš„æ¶ˆæ¯" + i);
+            producer.send(message);
+        }
+    }
 }  

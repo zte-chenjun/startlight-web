@@ -16,22 +16,22 @@ public class RedisJava {
     }
 
     public static  void connectionTest(){
-        //Á¬½Ó±¾µØµÄ Redis ·şÎñ
+        //è¿æ¥æœ¬åœ°çš„ Redis æœåŠ¡
 //        Jedis jedis = new Jedis("localhost");
         Jedis jedis = new Jedis("8.8.8.8",6379);
-        System.out.println("Á¬½Ó³É¹¦");
-        //²é¿´·şÎñÊÇ·ñÔËĞĞ
-        System.out.println("·şÎñÕıÔÚÔËĞĞ: "+jedis.ping());
+        System.out.println("è¿æ¥æˆåŠŸ");
+        //æŸ¥çœ‹æœåŠ¡æ˜¯å¦è¿è¡Œ
+        System.out.println("æœåŠ¡æ­£åœ¨è¿è¡Œ: "+jedis.ping());
         jedis.set("test","chenjun");
         System.out.println(jedis.get("test"));
-        //ÊÍ·Å×ÊÔ´
+        //é‡Šæ”¾èµ„æº
         jedis.close();
     }
 
     public static void jedisPool(){
         JedisPoolConfig config = new JedisPoolConfig();
-        config.setMaxTotal(30); //ÉèÖÃ×î´óÁ¬½ÓÊı
-        config.setMaxIdle(10); //ÉèÖÃ¿ÕÏĞÁ¬½ÓÊı
+        config.setMaxTotal(30); //è®¾ç½®æœ€å¤§è¿æ¥æ•°
+        config.setMaxIdle(10); //è®¾ç½®ç©ºé—²è¿æ¥æ•°
         JedisPool pool = new JedisPool(config,"192.168.88.128",6379);
         Jedis jedis = null;
         try {

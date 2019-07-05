@@ -12,7 +12,7 @@ public class FileTest {
         File file = new File("E://FileTest//word.txt");
         if(file.exists()){
 //            file.delete();
-//            System.out.println("¸ÃÎÄ¼şÒÑ±»É¾³ı");
+//            System.out.println("è¯¥æ–‡ä»¶å·²è¢«åˆ é™¤");
             String name = file.getName();
             String path = file.getAbsolutePath();
             long length = file.length();
@@ -24,7 +24,7 @@ public class FileTest {
         }else{
             try {
                 file.createNewFile();
-                System.out.println("¸ÃÎÄ¼şÒÑ±»´´½¨");
+                System.out.println("è¯¥æ–‡ä»¶å·²è¢«åˆ›å»º");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -35,7 +35,7 @@ public class FileTest {
         File file = new File("E://FileTest//word.txt");
         try {
             FileOutputStream output = new FileOutputStream(file);
-            byte[] buy = "ÎÒÓĞÒ»Ö»Ğ¡Ã«Â¿£¬ÎÒ´ÓÀ´²ÅÒ²²»Æï".getBytes();
+            byte[] buy = "æˆ‘æœ‰ä¸€åªå°æ¯›é©´ï¼Œæˆ‘ä»æ¥æ‰ä¹Ÿä¸éª‘".getBytes();
             output.write(buy);
             output.close();
         } catch (Exception e) {

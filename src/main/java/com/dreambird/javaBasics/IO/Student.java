@@ -9,7 +9,7 @@ public class Student {
 
 
     public static void main(String[] args){
-        String[] content = {"ÕÅÈı","ÀîËÄ","ÍõÎå"};
+        String[] content = {"å¼ ä¸‰","æå››","ç‹äº”"};
         File file = new File("E:/FileTest/word.txt");
         try {
             FileWriter writer = new FileWriter(file);
@@ -30,7 +30,7 @@ public class Student {
             int i = 1;
             String str = null;
             while ((str = br.readLine()) != null){
-                System.out.println("µÚ"+i+"ĞĞ:"+str);
+                System.out.println("ç¬¬"+i+"è¡Œ:"+str);
                 i++;
             }
             br.close();

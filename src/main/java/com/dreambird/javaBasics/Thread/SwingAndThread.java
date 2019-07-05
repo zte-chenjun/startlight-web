@@ -10,47 +10,47 @@ public class SwingAndThread extends JFrame {
 	 * TEST aha a a
 	 */
 	private static final long serialVersionUID = 1L;
-	private JLabel jl = new JLabel(); // ÉùÃ÷JLabel¶ÔÏó
-	private static Thread t; // ÉùÃ÷Ïß³Ì¶ÔÏó
-	private int count = 0; // ÉùÃ÷¼ÆÊı±äÁ¿
-	private Container container = getContentPane(); // ÉùÃ÷ÈİÆ÷
-	
+	private JLabel jl = new JLabel(); // å£°æ˜JLabelå¯¹è±¡
+	private static Thread t; // å£°æ˜çº¿ç¨‹å¯¹è±¡
+	private int count = 0; // å£°æ˜è®¡æ•°å˜é‡
+	private Container container = getContentPane(); // å£°æ˜å®¹å™¨
+
 	public SwingAndThread() {
-		setBounds(300, 200, 250, 100); // ¾ø¶Ô¶¨Î»´°Ìå´óĞ¡ÓëÎ»ÖÃ
-		container.setLayout(null); // Ê¹´°Ìå²»Ê¹ÓÃÈÎºÎ²¼¾Ö¹ÜÀíÆ÷
-		URL url = SwingAndThread.class.getResource("/1.gif"); // »ñÈ¡Í¼Æ¬µÄURL
-		Icon icon = new ImageIcon(url); // ÊµÀı»¯Ò»¸öIcon
-		jl.setIcon(icon); // ½«Í¼±ê·ÅÖÃÔÚ±êÇ©ÖĞ
-		 // ÉèÖÃÍ¼Æ¬ÔÚ±êÇ©µÄ×î×ó·½
+		setBounds(300, 200, 250, 100); // ç»å¯¹å®šä½çª—ä½“å¤§å°ä¸ä½ç½®
+		container.setLayout(null); // ä½¿çª—ä½“ä¸ä½¿ç”¨ä»»ä½•å¸ƒå±€ç®¡ç†å™¨
+		URL url = SwingAndThread.class.getResource("/1.gif"); // è·å–å›¾ç‰‡çš„URL
+		Icon icon = new ImageIcon(url); // å®ä¾‹åŒ–ä¸€ä¸ªIcon
+		jl.setIcon(icon); // å°†å›¾æ ‡æ”¾ç½®åœ¨æ ‡ç­¾ä¸­
+		// è®¾ç½®å›¾ç‰‡åœ¨æ ‡ç­¾çš„æœ€å·¦æ–¹
 		jl.setHorizontalAlignment(SwingConstants.LEFT);
-		jl.setBounds(10, 10, 200, 50); // ÉèÖÃ±êÇ©µÄÎ»ÖÃÓë´óĞ¡
+		jl.setBounds(10, 10, 200, 50); // è®¾ç½®æ ‡ç­¾çš„ä½ç½®ä¸å¤§å°
 		jl.setOpaque(true);
-		t = new Thread(new Runnable() { // ¶¨ÒåÄäÃûÄÚ²¿Àà£¬¸ÃÀàÊµÏÖRunnable½Ó¿Ú
-					public void run() { // ÖØĞ´run()·½·¨
-						while (count <= 200) { // ÉèÖÃÑ­»·Ìõ¼ş
-							 // ½«±êÇ©µÄºá×ø±êÓÃ±äÁ¿±íÊ¾
-							jl.setBounds(count, 10, 200, 50);
-							try {
-								Thread.sleep(1000); // Ê¹Ïß³ÌĞİÃß1000ºÁÃë
-							} catch (Exception e) {
-								e.printStackTrace();
-							}
-							count += 4; // Ê¹ºá×ø±êÃ¿´ÎÔö¼Ó4
-							if (count == 200) {
-								// µ±Í¼±êµ½´ï±êÇ©µÄ×îÓÒ±ß£¬Ê¹Æä»Øµ½±êÇ©×î×ó±ß
-								count = 10;
-							}
-						}
+		t = new Thread(new Runnable() { // å®šä¹‰åŒ¿åå†…éƒ¨ç±»ï¼Œè¯¥ç±»å®ç°Runnableæ¥å£
+			public void run() { // é‡å†™run()æ–¹æ³•
+				while (count <= 200) { // è®¾ç½®å¾ªç¯æ¡ä»¶
+					// å°†æ ‡ç­¾çš„æ¨ªåæ ‡ç”¨å˜é‡è¡¨ç¤º
+					jl.setBounds(count, 10, 200, 50);
+					try {
+						Thread.sleep(1000); // ä½¿çº¿ç¨‹ä¼‘çœ 1000æ¯«ç§’
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
-				});
-		t.start(); // Æô¶¯Ïß³Ì
-		container.add(jl); // ½«±êÇ©Ìí¼Óµ½ÈİÆ÷ÖĞ
-		setVisible(true); // Ê¹´°Ìå¿ÉÊÓ
-		// ÉèÖÃ´°ÌåµÄ¹Ø±Õ·½Ê½
+					count += 4; // ä½¿æ¨ªåæ ‡æ¯æ¬¡å¢åŠ 4
+					if (count == 200) {
+						// å½“å›¾æ ‡åˆ°è¾¾æ ‡ç­¾çš„æœ€å³è¾¹ï¼Œä½¿å…¶å›åˆ°æ ‡ç­¾æœ€å·¦è¾¹
+						count = 10;
+					}
+				}
+			}
+		});
+		t.start(); // å¯åŠ¨çº¿ç¨‹
+		container.add(jl); // å°†æ ‡ç­¾æ·»åŠ åˆ°å®¹å™¨ä¸­
+		setVisible(true); // ä½¿çª—ä½“å¯è§†
+		// è®¾ç½®çª—ä½“çš„å…³é—­æ–¹å¼
 		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
-	
+
 	public static void main(String[] args) {
-		new SwingAndThread(); // ÊµÀı»¯Ò»¸öSwingAndThread¶ÔÏó
+		new SwingAndThread(); // å®ä¾‹åŒ–ä¸€ä¸ªSwingAndThreadå¯¹è±¡
 	}
 }

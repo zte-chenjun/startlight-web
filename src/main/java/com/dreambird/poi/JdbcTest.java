@@ -1,97 +1,97 @@
 package com.dreambird.poi;
-import java.sql.Connection;    
-import java.sql.DriverManager;    
-import java.sql.PreparedStatement;    
-import java.sql.ResultSet;    
-import java.sql.Statement;    
-import java.sql.* ; 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.* ;
 
 /**
- * Êı¾İ¿âÁ¬½Ó²âÊÔÀà
+ * æ•°æ®åº“è¿æ¥æµ‹è¯•ç±»
  * @author chen.jun
  *
  */
-public class JdbcTest {    
-    //orclÎªoracleÊı¾İ¿âÖĞµÄÊı¾İ¿âÃû£¬localhost±íÊ¾Á¬½Ó±¾»úµÄoracleÊı¾İ¿â     
-    //1521ÎªÁ¬½ÓµÄ¶Ë¿ÚºÅ     
-    private static String url="jdbc:oracle:thin:@localhost:1521:orcl";    
-    //systemÎªµÇÂ½oracleÊı¾İ¿âµÄÓÃ»§Ãû     
-    private static String user="system";    
-    //managerÎªÓÃ»§ÃûsystemµÄÃÜÂë     
-    private static String password="system";    
-    public static Connection conn;    
-    public static PreparedStatement ps;    
-    public static ResultSet rs;    
-    public static Statement st ;    
-    //Á¬½ÓÊı¾İ¿âµÄ·½·¨     
-    public void getConnection(){    
-        try {    
-            //³õÊ¼»¯Çı¶¯°ü     
-            Class.forName("oracle.jdbc.driver.OracleDriver");    
-            //¸ù¾İÊı¾İ¿âÁ¬½Ó×Ö·û£¬Ãû³Æ£¬ÃÜÂë¸øconn¸³Öµ     
-            conn=DriverManager.getConnection(url, user, password);    
-                
-        } catch (Exception e) {    
-            // TODO: handle exception     
-            e.printStackTrace();    
-        }    
-    }    
-    
+public class JdbcTest {
+    //orclä¸ºoracleæ•°æ®åº“ä¸­çš„æ•°æ®åº“åï¼Œlocalhostè¡¨ç¤ºè¿æ¥æœ¬æœºçš„oracleæ•°æ®åº“
+    //1521ä¸ºè¿æ¥çš„ç«¯å£å·
+    private static String url="jdbc:oracle:thin:@localhost:1521:orcl";
+    //systemä¸ºç™»é™†oracleæ•°æ®åº“çš„ç”¨æˆ·å
+    private static String user="system";
+    //managerä¸ºç”¨æˆ·åsystemçš„å¯†ç 
+    private static String password="system";
+    public static Connection conn;
+    public static PreparedStatement ps;
+    public static ResultSet rs;
+    public static Statement st ;
+    //è¿æ¥æ•°æ®åº“çš„æ–¹æ³•
+    public void getConnection(){
+        try {
+            //åˆå§‹åŒ–é©±åŠ¨åŒ…
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            //æ ¹æ®æ•°æ®åº“è¿æ¥å­—ç¬¦ï¼Œåç§°ï¼Œå¯†ç ç»™connèµ‹å€¼
+            conn=DriverManager.getConnection(url, user, password);
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+    }
+
     /**
-     * Ò»¸ö·Ç³£±ê×¼µÄÁ¬½ÓOracleÊı¾İ¿âµÄÊ¾Àı´úÂë
+     * ä¸€ä¸ªéå¸¸æ ‡å‡†çš„è¿æ¥Oracleæ•°æ®åº“çš„ç¤ºä¾‹ä»£ç 
      */
     public void testOracle()
     {
-        Connection con = null;// ´´½¨Ò»¸öÊı¾İ¿âÁ¬½Ó
-        PreparedStatement pre = null;// ´´½¨Ô¤±àÒëÓï¾ä¶ÔÏó£¬Ò»°ã¶¼ÊÇÓÃÕâ¸ö¶ø²»ÓÃStatement
-        ResultSet result = null;// ´´½¨Ò»¸ö½á¹û¼¯¶ÔÏó
+        Connection con = null;// åˆ›å»ºä¸€ä¸ªæ•°æ®åº“è¿æ¥
+        PreparedStatement pre = null;// åˆ›å»ºé¢„ç¼–è¯‘è¯­å¥å¯¹è±¡ï¼Œä¸€èˆ¬éƒ½æ˜¯ç”¨è¿™ä¸ªè€Œä¸ç”¨Statement
+        ResultSet result = null;// åˆ›å»ºä¸€ä¸ªç»“æœé›†å¯¹è±¡
         try{
-            Class.forName("oracle.jdbc.driver.OracleDriver");// ¼ÓÔØOracleÇı¶¯³ÌĞò
-            System.out.println("¿ªÊ¼³¢ÊÔÁ¬½ÓÊı¾İ¿â£¡");
+            Class.forName("oracle.jdbc.driver.OracleDriver");// åŠ è½½Oracleé©±åŠ¨ç¨‹åº
+            System.out.println("å¼€å§‹å°è¯•è¿æ¥æ•°æ®åº“ï¼");
             String url = "jdbc:oracle:" + "thin:@localhost:1521:orcl";
-            String user = "scott";// ÓÃ»§Ãû,ÏµÍ³Ä¬ÈÏµÄÕË»§Ãû
-            String password = "tiger";// Äã°²×°Ê±Ñ¡ÉèÖÃµÄÃÜÂë
-            con = DriverManager.getConnection(url, user, password);// »ñÈ¡Á¬½Ó
-            System.out.println("Á¬½Ó³É¹¦£¡");
-            String sql = "select * from emp where sal>?";// Ô¤±àÒëÓï¾ä£¬¡°£¿¡±´ú±í²ÎÊı
+            String user = "scott";// ç”¨æˆ·å,ç³»ç»Ÿé»˜è®¤çš„è´¦æˆ·å
+            String password = "tiger";// ä½ å®‰è£…æ—¶é€‰è®¾ç½®çš„å¯†ç 
+            con = DriverManager.getConnection(url, user, password);// è·å–è¿æ¥
+            System.out.println("è¿æ¥æˆåŠŸï¼");
+            String sql = "select * from emp where sal>?";// é¢„ç¼–è¯‘è¯­å¥ï¼Œâ€œï¼Ÿâ€ä»£è¡¨å‚æ•°
 //            Statement st = con.createStatement();
 //            result = st.executeQuery(sql);
-            pre = con.prepareStatement(sql);// ÊµÀı»¯Ô¤±àÒëÓï¾ä
-            pre.setInt(1, 2000);// ÉèÖÃ²ÎÊı£¬Ç°ÃæµÄ1±íÊ¾²ÎÊıµÄË÷Òı£¬¶ø²»ÊÇ±íÖĞÁĞÃûµÄË÷Òı
-            result = pre.executeQuery();// Ö´ĞĞ²éÑ¯£¬×¢ÒâÀ¨ºÅÖĞ²»ĞèÒªÔÙ¼Ó²ÎÊı
+            pre = con.prepareStatement(sql);// å®ä¾‹åŒ–é¢„ç¼–è¯‘è¯­å¥
+            pre.setInt(1, 2000);// è®¾ç½®å‚æ•°ï¼Œå‰é¢çš„1è¡¨ç¤ºå‚æ•°çš„ç´¢å¼•ï¼Œè€Œä¸æ˜¯è¡¨ä¸­åˆ—åçš„ç´¢å¼•
+            result = pre.executeQuery();// æ‰§è¡ŒæŸ¥è¯¢ï¼Œæ³¨æ„æ‹¬å·ä¸­ä¸éœ€è¦å†åŠ å‚æ•°
             while (result.next())
-                // µ±½á¹û¼¯²»Îª¿ÕÊ±
-                System.out.println("¹¤ºÅ:" + result.getInt("EMPNO") + "ĞÕÃû:"
+                // å½“ç»“æœé›†ä¸ä¸ºç©ºæ—¶
+                System.out.println("å·¥å·:" + result.getInt("EMPNO") + "å§“å:"
                         + result.getString("ENAME"));
         }catch (Exception e){
             e.printStackTrace();
         }finally {
             try{
-                // ÖğÒ»½«ÉÏÃæµÄ¼¸¸ö¶ÔÏó¹Ø±Õ£¬ÒòÎª²»¹Ø±ÕµÄ»°»áÓ°ÏìĞÔÄÜ¡¢²¢ÇÒÕ¼ÓÃ×ÊÔ´
-                // ×¢Òâ¹Ø±ÕµÄË³Ğò£¬×îºóÊ¹ÓÃµÄ×îÏÈ¹Ø±Õ
+                // é€ä¸€å°†ä¸Šé¢çš„å‡ ä¸ªå¯¹è±¡å…³é—­ï¼Œå› ä¸ºä¸å…³é—­çš„è¯ä¼šå½±å“æ€§èƒ½ã€å¹¶ä¸”å ç”¨èµ„æº
+                // æ³¨æ„å…³é—­çš„é¡ºåºï¼Œæœ€åä½¿ç”¨çš„æœ€å…ˆå…³é—­
                 if (result != null)
                     result.close();
                 if (pre != null)
                     pre.close();
                 if (con != null)
                     con.close();
-                System.out.println("Êı¾İ¿âÁ¬½ÓÒÑ¹Ø±Õ£¡");
+                System.out.println("æ•°æ®åº“è¿æ¥å·²å…³é—­ï¼");
             }catch (Exception e){
                 e.printStackTrace();
             }
         }
     }
-    
-     //²âÊÔÄÜ·ñÓëoracleÊı¾İ¿âÁ¬½Ó³É¹¦     
-     public static void main(String[] args) {    
-        JdbcTest basedao=new JdbcTest();    
-//        basedao.getConnection();    
-//        if(conn==null){    
-//            System.out.println("ÓëoracleÊı¾İ¿âÁ¬½ÓÊ§°Ü£¡");    
-//        }else{    
-//            System.out.println("ÓëoracleÊı¾İ¿âÁ¬½Ó³É¹¦£¡");    
+
+    //æµ‹è¯•èƒ½å¦ä¸oracleæ•°æ®åº“è¿æ¥æˆåŠŸ
+    public static void main(String[] args) {
+        JdbcTest basedao=new JdbcTest();
+//        basedao.getConnection();
+//        if(conn==null){
+//            System.out.println("ä¸oracleæ•°æ®åº“è¿æ¥å¤±è´¥ï¼");
+//        }else{
+//            System.out.println("ä¸oracleæ•°æ®åº“è¿æ¥æˆåŠŸï¼");
 //        }   
-        
+
         basedao.testOracle();
-     }    
+    }
 }    

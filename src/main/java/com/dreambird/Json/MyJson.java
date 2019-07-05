@@ -17,17 +17,17 @@ public class MyJson {
         CreateJson();
     }
 
-    //解析JSON
+    //瑙ｆ瀽JSON
     private static void ParseJson(String jsonString) throws JSONException
     {
         JSONObject jObject = new JSONObject(jsonString);
         System.out.println(jObject.get("name"));
     }
 
-    //创建一个JSON
+    //鍒涘缓涓�涓狫SON
     private static void CreateJson() throws JSONException
     {
-        // 下面构造两个map、一个list和一个Employee对象
+        // 涓嬮潰鏋勯�犱袱涓猰ap銆佷竴涓猯ist鍜屼竴涓狤mployee瀵硅薄
         Map<String, String> map1 = new HashMap<String, String>();
         map1.put("name", "Alexia");
         map1.put("sex", "female");
@@ -38,11 +38,11 @@ public class MyJson {
         map2.put("sex", "male");
         map2.put("age", "24");
 
-        // 将Map转换为JSONArray数据
+        // 灏哅ap杞崲涓篔SONArray鏁版嵁
         JSONArray jArray = new JSONArray();
         jArray.put(map1);
         jArray.put(map2);
-        //定义JSON
+        //瀹氫箟JSON
         JSONObject jObject=new JSONObject();
         jObject.put("List", jArray);
         jObject.put("Count","1200");

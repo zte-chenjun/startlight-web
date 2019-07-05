@@ -14,12 +14,12 @@ public class MainTest {
     public static void main(String[] args){
 //        double d = 3.14;
 //        StringDemo stringDemo = new StringDemo();
-        //×Ö·û´®µÄÉùÃ÷
+        //å­—ç¬¦ä¸²çš„å£°æ˜Ž
 //        stringDemo.method1();
 //        stringDemo.method2();
 //        stringDemo.method3();
 //        stringDemo.method4();
-        //Á¬½Ó×Ö·û´®
+        //è¿žæŽ¥å­—ç¬¦ä¸²
 //        String a = "hello,word,big,total";
 //        String[] myChar = a.split(",",3);
 //        for (String string:myChar){
@@ -31,7 +31,7 @@ public class MainTest {
 //        }
 
         MainTest mainTest = new MainTest();
-        mainTest.iterator();  
+        mainTest.iterator();
 
     }
 

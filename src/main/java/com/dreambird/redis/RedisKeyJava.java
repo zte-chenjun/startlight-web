@@ -11,11 +11,11 @@ import java.util.Set;
 public class RedisKeyJava {
 
     public static void main(String[] args) {
-        //Á¬½Ó±¾µØµÄ Redis ·şÎñ
+        //è¿æ¥æœ¬åœ°çš„ Redis æœåŠ¡
         Jedis jedis = new Jedis("localhost");
-        System.out.println("Á¬½Ó³É¹¦");
+        System.out.println("è¿æ¥æˆåŠŸ");
 
-        // »ñÈ¡Êı¾İ²¢Êä³ö
+        // è·å–æ•°æ®å¹¶è¾“å‡º
         Set<String> keys = jedis.keys("*");
         Iterator<String> it=keys.iterator() ;
         while(it.hasNext()){

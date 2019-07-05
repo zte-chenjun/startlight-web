@@ -8,12 +8,12 @@ import redis.clients.jedis.Jedis;
 public class RedisStringJava {
 
     public static void main(String[] args) {
-        //Á¬½Ó±¾µØµÄ Redis ·şÎñ
+        //è¿æ¥æœ¬åœ°çš„ Redis æœåŠ¡
         Jedis jedis = new Jedis("localhost");
-        System.out.println("Á¬½Ó³É¹¦");
-        //ÉèÖÃ redis ×Ö·û´®Êı¾İ
+        System.out.println("è¿æ¥æˆåŠŸ");
+        //è®¾ç½® redis å­—ç¬¦ä¸²æ•°æ®
         jedis.set("runoobkey", "www.runoob.com");
-        // »ñÈ¡´æ´¢µÄÊı¾İ²¢Êä³ö
-        System.out.println("redis ´æ´¢µÄ×Ö·û´®Îª: "+ jedis.get("runoobkey"));
+        // è·å–å­˜å‚¨çš„æ•°æ®å¹¶è¾“å‡º
+        System.out.println("redis å­˜å‚¨çš„å­—ç¬¦ä¸²ä¸º: "+ jedis.get("runoobkey"));
     }
 }

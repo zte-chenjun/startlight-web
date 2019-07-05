@@ -5,14 +5,14 @@ import java.io.*;
 
 import javax.swing.*;
 
-public class FTest extends JFrame { // ´´½¨Àà£¬¼Ì³ĞJframeÀà
+public class FTest extends JFrame { // åˆ›å»ºç±»ï¼Œç»§æ‰¿Jframeç±»
     private JScrollPane scrollPane;
     private static final long serialVersionUID = 1L;
-    private JPanel jContentPane = null; // ´´½¨Ãæ°å¶ÔÏó
-    private JTextArea jTextArea = null; // ´´½¨ÎÄ±¾Óò¶ÔÏó
-    private JPanel controlPanel = null; // ´´½¨Ãæ°å¶ÔÏó
-    private JButton openButton = null; // ´´½¨°´Å¥¶ÔÏó
-    private JButton closeButton = null; // ´´½¨°´Å¥¶ÔÏó
+    private JPanel jContentPane = null; // åˆ›å»ºé¢æ¿å¯¹è±¡
+    private JTextArea jTextArea = null; // åˆ›å»ºæ–‡æœ¬åŸŸå¯¹è±¡
+    private JPanel controlPanel = null; // åˆ›å»ºé¢æ¿å¯¹è±¡
+    private JButton openButton = null; // åˆ›å»ºæŒ‰é’®å¯¹è±¡
+    private JButton closeButton = null; // åˆ›å»ºæŒ‰é’®å¯¹è±¡
 
     private JTextArea getJTextArea() {
         if (jTextArea == null) {
@@ -36,20 +36,20 @@ public class FTest extends JFrame { // ´´½¨Àà£¬¼Ì³ĞJframeÀà
     private JButton getOpenButton() {
         if (openButton == null) {
             openButton = new JButton();
-            openButton.setText("Ğ´ÈëÎÄ¼ş"); // ĞŞ¸Ä°´Å¥µÄÌáÊ¾ĞÅÏ¢
+            openButton.setText("å†™å…¥æ–‡ä»¶"); // ä¿®æ”¹æŒ‰é’®çš„æç¤ºä¿¡æ¯
             openButton
                     .addActionListener(new java.awt.event.ActionListener() {
-                        // °´Å¥µÄµ¥»÷ÊÂ¼ş
+                        // æŒ‰é’®çš„å•å‡»äº‹ä»¶
                         public void actionPerformed(ActionEvent e) {
-                            // ´´½¨ÎÄ¼ş¶ÔÏó
+                            // åˆ›å»ºæ–‡ä»¶å¯¹è±¡
                             File file = new File("E:/FileTest/word.txt");
                             try {
-                                // ´´½¨FileWriter¶ÔÏó
+                                // åˆ›å»ºFileWriterå¯¹è±¡
                                 FileWriter out = new FileWriter(file);
-                                // »ñÈ¡ÎÄ±¾ÓòÖĞÎÄ±¾
+                                // è·å–æ–‡æœ¬åŸŸä¸­æ–‡æœ¬
                                 String s = jTextArea.getText();
-                                out.write(s); // ½«ĞÅÏ¢Ğ´Èë´ÅÅÌÎÄ¼ş
-                                out.close(); // ½«Á÷¹Ø±Õ
+                                out.write(s); // å°†ä¿¡æ¯å†™å…¥ç£ç›˜æ–‡ä»¶
+                                out.close(); // å°†æµå…³é—­
                             } catch (Exception e1) {
                                 e1.printStackTrace();
                             }
@@ -62,20 +62,20 @@ public class FTest extends JFrame { // ´´½¨Àà£¬¼Ì³ĞJframeÀà
     private JButton getCloseButton() {
         if (closeButton == null) {
             closeButton = new JButton();
-            closeButton.setText("¶ÁÈ¡ÎÄ¼ş"); // ĞŞ¸Ä°´Å¥µÄÌáÊ¾ĞÅÏ¢
+            closeButton.setText("è¯»å–æ–‡ä»¶"); // ä¿®æ”¹æŒ‰é’®çš„æç¤ºä¿¡æ¯
             closeButton
                     .addActionListener(new java.awt.event.ActionListener() {
-                        // °´Å¥µÄµ¥»÷ÊÂ¼ş
+                        // æŒ‰é’®çš„å•å‡»äº‹ä»¶
                         public void actionPerformed(ActionEvent e) {
-                            File file = new File("E:/FileTest/word.txt"); // ´´½¨ÎÄ¼ş¶ÔÏó
+                            File file = new File("E:/FileTest/word.txt"); // åˆ›å»ºæ–‡ä»¶å¯¹è±¡
                             try {
-                                // ´´½¨FileReader¶ÔÏó
+                                // åˆ›å»ºFileReaderå¯¹è±¡
                                 FileReader in = new FileReader(file);
-                                char byt[] = new char[1024]; // ´´½¨charĞÍÊı×é
-                                int len = in.read(byt); // ½«×Ö½Ú¶ÁÈëÊı×é
-                                // ÉèÖÃÎÄ±¾ÓòµÄÏÔÊ¾ĞÅÏ¢
+                                char byt[] = new char[1024]; // åˆ›å»ºcharå‹æ•°ç»„
+                                int len = in.read(byt); // å°†å­—èŠ‚è¯»å…¥æ•°ç»„
+                                // è®¾ç½®æ–‡æœ¬åŸŸçš„æ˜¾ç¤ºä¿¡æ¯
                                 jTextArea.setText(new String(byt, 0, len));
-                                in.close(); // ¹Ø±ÕÁ÷
+                                in.close(); // å…³é—­æµ
                             } catch (Exception e1) {
                                 e1.printStackTrace();
                             }
@@ -106,10 +106,10 @@ public class FTest extends JFrame { // ´´½¨Àà£¬¼Ì³ĞJframeÀà
         return jContentPane;
     }
 
-    public static void main(String[] args) { // Ö÷·½·¨
-        FTest thisClass = new FTest(); // ´´½¨±¾Àà¶ÔÏó
+    public static void main(String[] args) { // ä¸»æ–¹æ³•
+        FTest thisClass = new FTest(); // åˆ›å»ºæœ¬ç±»å¯¹è±¡
         thisClass.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        thisClass.setVisible(true); // ÉèÖÃ¸Ã´°ÌåÎªÏÔÊ¾×´Ì¬
+        thisClass.setVisible(true); // è®¾ç½®è¯¥çª—ä½“ä¸ºæ˜¾ç¤ºçŠ¶æ€
     }
     /**
      * @return

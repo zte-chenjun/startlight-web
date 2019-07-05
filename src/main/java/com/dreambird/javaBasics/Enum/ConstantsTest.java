@@ -1,18 +1,18 @@
 package com.dreambird.javaBasics.Enum;
 
-interface Constants { // ½«³£Á¿·ÅÖÃÔÚ½Ó¿ÚÖĞ
+interface Constants { // å°†å¸¸é‡æ”¾ç½®åœ¨æ¥å£ä¸­
 	public static final int Constants_A = 1;
 	public static final int Constants_B = 12;
 }
 
 public class ConstantsTest {
-	enum Constants2 { // ½«³£Á¿·ÅÖÃÔÚÃ¶¾ÙÀàĞÍÖĞ
+	enum Constants2 { // å°†å¸¸é‡æ”¾ç½®åœ¨æšä¸¾ç±»å‹ä¸­
 		Constants_A, Constants_B
 	}
-	
-	// Ê¹ÓÃ½Ó¿Ú¶¨Òå³£Á¿
-	public static void doit(int c) { // ¶¨ÒåÒ»¸ö·½·¨£¬ÕâÀïµÄ²ÎÊıÎªintĞÍ
-		switch (c) { // ¸ù¾İ³£Á¿µÄÖµ×ö²»Í¬²Ù×÷
+
+	// ä½¿ç”¨æ¥å£å®šä¹‰å¸¸é‡
+	public static void doit(int c) { // å®šä¹‰ä¸€ä¸ªæ–¹æ³•ï¼Œè¿™é‡Œçš„å‚æ•°ä¸ºintå‹
+		switch (c) { // æ ¹æ®å¸¸é‡çš„å€¼åšä¸åŒæ“ä½œ
 			case Constants.Constants_A:
 				System.out.println("doit() Constants_A");
 				break;
@@ -21,9 +21,9 @@ public class ConstantsTest {
 				break;
 		}
 	}
-	// ¶¨ÒåÒ»¸ö·½·¨£¬ÕâÀïµÄ²ÎÊıÎªÃ¶¾ÙÀàĞÍ¶ÔÏó
-	public static void doit2(Constants2 c) { 
-		switch (c) { // ¸ù¾İÃ¶¾ÙÀàĞÍ¶ÔÏó×ö²»Í¬²Ù×÷
+	// å®šä¹‰ä¸€ä¸ªæ–¹æ³•ï¼Œè¿™é‡Œçš„å‚æ•°ä¸ºæšä¸¾ç±»å‹å¯¹è±¡
+	public static void doit2(Constants2 c) {
+		switch (c) { // æ ¹æ®æšä¸¾ç±»å‹å¯¹è±¡åšä¸åŒæ“ä½œ
 			case Constants_A:
 				System.out.println("doit2() Constants_A");
 				break;
@@ -32,11 +32,11 @@ public class ConstantsTest {
 				break;
 		}
 	}
-	
+
 	public static void main(String[] args) {
-		ConstantsTest.doit(Constants.Constants_A); // Ê¹ÓÃ½Ó¿ÚÖĞ¶¨ÒåµÄ³£Á¿
-		ConstantsTest.doit2(Constants2.Constants_A); // Ê¹ÓÃÃ¶¾ÙÀàĞÍÖĞµÄ³£Á¿
-		ConstantsTest.doit2(Constants2.Constants_B); // Ê¹ÓÃÃ¶¾ÙÀàĞÍÖĞµÄ³£Á¿
+		ConstantsTest.doit(Constants.Constants_A); // ä½¿ç”¨æ¥å£ä¸­å®šä¹‰çš„å¸¸é‡
+		ConstantsTest.doit2(Constants2.Constants_A); // ä½¿ç”¨æšä¸¾ç±»å‹ä¸­çš„å¸¸é‡
+		ConstantsTest.doit2(Constants2.Constants_B); // ä½¿ç”¨æšä¸¾ç±»å‹ä¸­çš„å¸¸é‡
 		ConstantsTest.doit(3);
 		// ConstantsTest.doit2(3);
 	}

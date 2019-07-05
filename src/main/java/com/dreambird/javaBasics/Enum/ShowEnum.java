@@ -3,14 +3,14 @@ package com.dreambird.javaBasics.Enum;
 import static java.lang.System.*;
 
 public class ShowEnum {
-	enum Constants2 { // ½«³£Á¿·ÅÖÃÔÚÃ¶¾ÙÀàĞÍÖĞ
+	enum Constants2 { // å°†å¸¸é‡æ”¾ç½®åœ¨æšä¸¾ç±»å‹ä¸­
 		Constants_A, Constants_B
 	}
-	 // Ñ­»·ÓÉvalues()·½·¨·µ»ØµÄÊı×é
+	// å¾ªç¯ç”±values()æ–¹æ³•è¿”å›çš„æ•°ç»„
 	public static void main(String[] args) {
 		for (int i = 0; i < Constants2.values().length; i++) {
-			// ½«Ã¶¾Ù³ÉÔ±±äÁ¿´òÓ¡
-			out.println("Ã¶¾ÙÀàĞÍ³ÉÔ±±äÁ¿£º" + Constants2.values()[i]);
+			// å°†æšä¸¾æˆå‘˜å˜é‡æ‰“å°
+			out.println("æšä¸¾ç±»å‹æˆå‘˜å˜é‡ï¼š" + Constants2.values()[i]);
 		}
 	}
 
