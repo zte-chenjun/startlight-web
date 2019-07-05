@@ -16,5 +16,4 @@
         <listener-class>com.dreambird.quartz.JobRunner</listener-class>
     </listener>
 
-
 </web-app>
