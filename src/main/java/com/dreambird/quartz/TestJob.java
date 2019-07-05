@@ -8,7 +8,15 @@ public class TestJob {
     public static String JOB_GROUP_NAME = "XLXXCC_JOB_GROUP";
     public static String TRIGGER_GROUP_NAME = "XLXXCC_JOB_GROUP";
 
-    public static void main(String[] args) {
+    private static TestJob testJob = new TestJob();
+
+    private TestJob(){}
+
+    public static TestJob getTestJob(){
+        return testJob;
+    }
+
+    public void test() {
         try {
             System.out.println("【系统启动】开始(每1秒输出一次)...");
             QuartzManager.addJob(JOB_NAME, JOB_GROUP_NAME, TRIGGER_NAME, TRIGGER_GROUP_NAME, MyJob.class, "0/1 * * * * ?");

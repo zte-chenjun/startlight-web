@@ -22,53 +22,53 @@ public class JedisDemo {
     }
 
     /**
-     * redis´æ´¢×Ö·û´®
+     * rediså­˜å‚¨å­—ç¬¦ä¸²
      */
     @Test
     public void testString(){
-        //Ìí¼ÓÊı¾İ
-        jedis.set("name","ÕÅÈı");
+        //æ·»åŠ æ•°æ®
+        jedis.set("name","å¼ ä¸‰");
         System.out.println(jedis.get("name"));
 
-        //Æ´½ÓÊı¾İ
-        jedis.append("name","ºÃÑùµÄ");
+        //æ‹¼æ¥æ•°æ®
+        jedis.append("name","å¥½æ ·çš„");
         System.out.println(jedis.get("name"));
 
-        //É¾³ıÊı¾İ
+        //åˆ é™¤æ•°æ®
         jedis.del("name");
         System.out.println(jedis.get("name"));
 
-        //ÉèÖÃ¶à¸ö¼üÖµ¶Ô
-        jedis.mset("name","ÕÅÈı","age","12","QQ","123456");
+        //è®¾ç½®å¤šä¸ªé”®å€¼å¯¹
+        jedis.mset("name","å¼ ä¸‰","age","12","QQ","123456");
         jedis.incr("age");
-        System.out.println("ĞÕÃû£º"+jedis.get("name")+"  ÄêÁä£º"+jedis.get("age")+"  QQ:"+jedis.get("QQ"));
+        System.out.println("å§“åï¼š"+jedis.get("name")+"  å¹´é¾„ï¼š"+jedis.get("age")+"  QQ:"+jedis.get("QQ"));
     }
 
     /**
-     * redis²Ù×÷Map
+     * redisæ“ä½œMap
      */
     @Test
     public void testMap(){
-        //-----Ìí¼ÓÊı¾İ----------
+        //-----æ·»åŠ æ•°æ®----------
         Map<String,String> map = new HashMap<String,String>();
-         map.put("name","ÕÅÈı");
-         map.put("age","12");
-         map.put("QQ","123456");
-         jedis.hmset("user",map);
-        //È¡³öuserÖĞµÄname£¬Ö´ĞĞ½á¹û:[minxr]-->×¢Òâ½á¹ûÊÇÒ»¸ö·ºĞÍµÄList
-        //µÚÒ»¸ö²ÎÊıÊÇ´æÈëredisÖĞmap¶ÔÏóµÄkey£¬ºóÃæ¸úµÄÊÇ·ÅÈëmapÖĞµÄ¶ÔÏóµÄkey£¬ºóÃæµÄkey¿ÉÒÔ¸ú¶à¸ö£¬ÊÇ¿É±ä²ÎÊı
+        map.put("name","å¼ ä¸‰");
+        map.put("age","12");
+        map.put("QQ","123456");
+        jedis.hmset("user",map);
+        //å–å‡ºuserä¸­çš„nameï¼Œæ‰§è¡Œç»“æœ:[minxr]-->æ³¨æ„ç»“æœæ˜¯ä¸€ä¸ªæ³›å‹çš„List
+        //ç¬¬ä¸€ä¸ªå‚æ•°æ˜¯å­˜å…¥redisä¸­mapå¯¹è±¡çš„keyï¼Œåé¢è·Ÿçš„æ˜¯æ”¾å…¥mapä¸­çš„å¯¹è±¡çš„keyï¼Œåé¢çš„keyå¯ä»¥è·Ÿå¤šä¸ªï¼Œæ˜¯å¯å˜å‚æ•°
         List<String> resultMap = jedis.hmget("user","name","age","QQ");
         System.out.println(resultMap);
 
-        //É¾³ımapÖĞµÄÄ³¸ö¼üÖµ
+        //åˆ é™¤mapä¸­çš„æŸä¸ªé”®å€¼
         jedis.hdel("user","age");
-        System.out.println(jedis.hmget("user", "age")); //ÒòÎªÉ¾³ıÁË£¬ËùÒÔ·µ»ØµÄÊÇnull
-        System.out.println(jedis.hlen("user")); //·µ»ØkeyÎªuserµÄ¼üÖĞ´æ·ÅµÄÖµµÄ¸öÊı2
-        System.out.println(jedis.exists("user"));//ÊÇ·ñ´æÔÚkeyÎªuserµÄ¼ÇÂ¼ ·µ»Øtrue
-        System.out.println(jedis.hkeys("user"));//·µ»Ømap¶ÔÏóÖĞµÄËùÓĞkey
-        System.out.println(jedis.hvals("user"));//·µ»Ømap¶ÔÏóÖĞµÄËùÓĞvalue
+        System.out.println(jedis.hmget("user", "age")); //å› ä¸ºåˆ é™¤äº†ï¼Œæ‰€ä»¥è¿”å›çš„æ˜¯null
+        System.out.println(jedis.hlen("user")); //è¿”å›keyä¸ºuserçš„é”®ä¸­å­˜æ”¾çš„å€¼çš„ä¸ªæ•°2
+        System.out.println(jedis.exists("user"));//æ˜¯å¦å­˜åœ¨keyä¸ºuserçš„è®°å½• è¿”å›true
+        System.out.println(jedis.hkeys("user"));//è¿”å›mapå¯¹è±¡ä¸­çš„æ‰€æœ‰key
+        System.out.println(jedis.hvals("user"));//è¿”å›mapå¯¹è±¡ä¸­çš„æ‰€æœ‰value
 
-        //±éÀúredisÖĞµÄMap
+        //éå†redisä¸­çš„Map
         Iterator<String> it = jedis.hkeys("user").iterator();
         while (it.hasNext()){
             String key = it.next();
@@ -78,20 +78,20 @@ public class JedisDemo {
     }
 
     /**
-     * jedis²Ù×÷List
+     * jedisæ“ä½œList
      */
     @Test
     public void testList(){
-        //¿ªÊ¼Ç°ÏÈÒÆ³ıËùÓĞÄÚÈİ
+        //å¼€å§‹å‰å…ˆç§»é™¤æ‰€æœ‰å†…å®¹
         jedis.del("java framework");
         System.out.println(jedis.lrange("java framework",0,-1));
 
-        //´æ·ÅÊı¾İ
+        //å­˜æ”¾æ•°æ®
         jedis.lpush("java framework","spring");
         jedis.lpush("java framework","struts");
         jedis.lpush("java framework","hibernate");
-        //ÔÙÈ¡³öËùÓĞÊı¾İjedis.lrangeÊÇ°´·¶Î§È¡³ö£¬
-        // µÚÒ»¸öÊÇkey£¬µÚ¶ş¸öÊÇÆğÊ¼Î»ÖÃ£¬µÚÈı¸öÊÇ½áÊøÎ»ÖÃ£¬jedis.llen»ñÈ¡³¤¶È -1±íÊ¾È¡µÃËùÓĞ
+        //å†å–å‡ºæ‰€æœ‰æ•°æ®jedis.lrangeæ˜¯æŒ‰èŒƒå›´å–å‡ºï¼Œ
+        // ç¬¬ä¸€ä¸ªæ˜¯keyï¼Œç¬¬äºŒä¸ªæ˜¯èµ·å§‹ä½ç½®ï¼Œç¬¬ä¸‰ä¸ªæ˜¯ç»“æŸä½ç½®ï¼Œjedis.llenè·å–é•¿åº¦ -1è¡¨ç¤ºå–å¾—æ‰€æœ‰
         System.out.println(jedis.lrange("java framework",0,-1));
 
         jedis.del("java framework");
@@ -102,7 +102,7 @@ public class JedisDemo {
     }
 
     /**
-     * jedis²Ù×÷Set
+     * jedisæ“ä½œSet
      */
     @Test
     public void testSet(){

@@ -11,6 +11,9 @@
     </welcome-file-list>
 
 
-
+    <!-- 定时任务 -->
+    <listener>
+        <listener-class>com.dreambird.quartz.JobRunner</listener-class>
+    </listener>
 
 </web-app>
