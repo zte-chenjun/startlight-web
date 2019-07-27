@@ -17,6 +17,7 @@
             <version>2.9.0</version>
         </dependency>
 
+        <!-- 定时器 -->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
@@ -33,12 +34,12 @@
             <version>2.1.7</version>
         </dependency>
 
+        <!-- POI -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>3.16</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
@@ -70,6 +71,7 @@
             <version>2.6.0</version>
         </dependency>
 
+        <!-- activemq -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-client</artifactId>

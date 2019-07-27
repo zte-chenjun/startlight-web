@@ -10,10 +10,12 @@
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
 
+    <display-name>HelloWorldSpring</display-name>
 
-    <!-- 定时任务 -->
-    <listener>
-        <listener-class>com.dreambird.quartz.JobRunner</listener-class>
-    </listener>
+
+    <!--&lt;!&ndash; 定时任务 &ndash;&gt;-->
+    <!--<listener>-->
+        <!--<listener-class>com.dreambird.quartz.JobRunner</listener-class>-->
+    <!--</listener>-->
 
 </web-app>

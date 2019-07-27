@@ -17,6 +17,7 @@ import static org.quartz.TriggerBuilder.newTrigger;
  * @author 陈浩良
  * @date Apr 26, 2017 3:31:26 PM
  */
+@javax.servlet.annotation.WebListener()
 public class JobRunner implements ServletContextListener {
 	
 
