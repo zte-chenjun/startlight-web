@@ -32,10 +32,10 @@ public class MyJson2 {
 		map1.put("age", "23");
 		map1.put("age2", "24");
 
-		Map<String, String> map2 = new HashMap<String, String>();
-		map2.put("name", "Edward");
-		map2.put("sex", "male");
-		map2.put("age", "24");
+        Map<String, String> map2 = new HashMap<String, String>();
+        map2.put("name", "Edward");
+        map2.put("sex", "male");
+        map2.put("age", "24");
 
 		// 将Map转换为JSONArray数据
 		JSONArray jArray = new JSONArray();
